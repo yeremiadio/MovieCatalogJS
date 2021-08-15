@@ -49,8 +49,8 @@ class MovieItem extends HTMLElement {
 </style>
     <div class="card">
     <img
-      src="${this._movie.image}"
-      style="height: 180px; width: 100%;"
+      src="https://image.tmdb.org/t/p/original${this._movie.poster_path}"
+      style="height: 200px; width: 100%;"
       alt="ExamplePoster"
     />
     <div class="info">
