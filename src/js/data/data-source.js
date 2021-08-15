@@ -6,10 +6,11 @@ class DataSource {
       `https://api.themoviedb.org/3/discover/movie?api_key=8a7e4914d776967d634c1ac85bb1b244&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
     )
       .then((response) => {
-        return response.json();
+        return (response.json());
       })
       .then((responseJson) => {
         if (responseJson.results) {
+          console.log(responseJson.results);
           return Promise.resolve(responseJson.results);
         } else {
           return Promise.reject(`${keyword} is not found`);
