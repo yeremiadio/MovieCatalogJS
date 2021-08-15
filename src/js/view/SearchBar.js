@@ -21,8 +21,10 @@ class SearchBar extends HTMLElement {
     this.shadowDOM.innerHTML = `
         <style>
         .search-container {
+          flex-direction: column;
+          position: static;
           max-width: 800px;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 1px 2px rgba(0, 0, 0, 0.05);
           padding: 16px;
           border-radius: 5px;
           display: flex;
@@ -32,7 +34,7 @@ class SearchBar extends HTMLElement {
        }
         
        .search-container > input {
-          width: 75%;
+          width: 100%;
           padding: 16px;
           border: 0;
           border-bottom: 1px solid cornflowerblue;
@@ -54,9 +56,10 @@ class SearchBar extends HTMLElement {
        }
         
        .search-container > button {
-          width: 23%;
+          border-radius: 3px;
+          width: 100%;
           cursor: pointer;
-          margin-left: auto;
+          margin-top: 10px;
           padding: 16px;
           background-color: cornflowerblue;
           color: white;
@@ -64,12 +67,7 @@ class SearchBar extends HTMLElement {
           text-transform: uppercase;
        }
         
-       @media screen and (max-width: 550px){
-          .search-container {
-              flex-direction: column;
-              position: static;
-          }
-        
+       @media screen and (max-width: 550px){        
           .search-container > input {
               width: 100%;
               margin-bottom: 12px;
@@ -86,8 +84,10 @@ class SearchBar extends HTMLElement {
           </div>
           `;
 
-    this.shadowDOM.querySelector("#searchButtonElement").addEventListener("click", this._clickEvent);
+    this.shadowDOM
+      .querySelector("#searchButtonElement")
+      .addEventListener("click", this._clickEvent);
   }
 }
 
-customElements.define('search-bar', SearchBar)
+customElements.define("search-bar", SearchBar);
