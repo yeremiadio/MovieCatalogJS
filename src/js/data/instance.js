@@ -1,0 +1,2 @@
+export const discoverUrl = `https://api.themoviedb.org/3/discover/movie?api_key=8a7e4914d776967d634c1ac85bb1b244`;
+export const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=8a7e4914d776967d634c1ac85bb1b244&query=`;

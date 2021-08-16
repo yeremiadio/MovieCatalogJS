@@ -1,30 +1,34 @@
 import "./view/MovieList.js";
 import "./view/MovieItem.js";
-import DataSource from "./data/data-source.js";
+import './view/AppBar.js'
+// import DataSource from "./data/data-source.js";
 import "./view/SearchBar.js";
 
 const main = () => {
   const movielistElement = document.querySelector("movie-list");
   const searchElement = document.querySelector("search-bar");
+  const brandRefreshElement = document.querySelector("app-bar")
 
-  const buttonGetMovie = async () => {
-    try {
-      const results = await DataSource.searchMovies(searchElement.value);
-      renderResult(results);
+  const refreshPage = () => {
+    window.location.reload()
+  }
+
+  const buttonSearchMovie = async () => {
+    try  {
+      if(searchElement.value === '') {
+        movielistElement.getMovies()
+      }
+      else {
+        movielistElement.searchMovies(searchElement.value)
+      }
     } catch (message) {
-      fallbackResult(message);
+      movielistElement.renderError(message);
     }
   };
 
-  const renderResult = (results) => {
-    movielistElement.movies = results;
-  };
+  brandRefreshElement.clickEvent = refreshPage
+  searchElement.clickEvent = buttonSearchMovie;
 
-  const fallbackResult = (message) => {
-    movielistElement.renderError(message);
-  };
-
-  searchElement.clickEvent = buttonGetMovie;
 };
 
 export default main;
