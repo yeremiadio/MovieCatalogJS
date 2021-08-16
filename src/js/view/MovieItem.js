@@ -29,7 +29,7 @@ class MovieItem extends HTMLElement {
       margin: 8px;
       box-shadow: 0px 2px 0px 1px rgba(0,0,0,0.05);
       border: 1px solid #d8d8d8;
-      border-radius: 10px;
+      border-radius: 5px;
       width: 160px;
       height: auto;
       overflow: hidden;
