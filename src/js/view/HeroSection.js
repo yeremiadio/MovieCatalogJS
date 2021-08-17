@@ -118,7 +118,7 @@ class HeroSection extends HTMLElement {
         
        .search-container > button {
           box-shadow: 0px 1px 20px #03254121;
-          border-radius: 3px;
+          border-radius: 50px;
           cursor: pointer;
           padding: 16px 30px;
           font-family: 'Nunito', cursive;
