@@ -31,7 +31,7 @@ class MovieItem extends HTMLElement {
       border: 1px solid #d8d8d8;
       border-radius: 5px;
       width: 160px;
-      height: 305px;
+      height: 320px;
       overflow: hidden;
     }
 
