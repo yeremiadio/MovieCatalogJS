@@ -88,11 +88,10 @@ class HeroSection extends HTMLElement {
        }
 
        .search-container {
-         position: relative;
          width: 80%;
          margin: auto;
        }
-        
+
        .search-container > input {
           width: 100%;
           margin-right: 10px;
@@ -102,6 +101,7 @@ class HeroSection extends HTMLElement {
           background-color: white;
           border-radius: 50px;
           box-shadow: 0px 1px 20px #03254121;
+          
        }
         
        .search-container > input:focus {
@@ -132,10 +132,12 @@ class HeroSection extends HTMLElement {
        @media screen and (max-width: 550px){ 
           .search-container {
             flex-direction: column;
+            position: static;
           }       
           .search-container > input {
               width: 100%;
               padding: 15px 30px;
+              
           }
         
           .search-container > button {
@@ -147,6 +149,7 @@ class HeroSection extends HTMLElement {
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
           }
        }
        .greetHero {
