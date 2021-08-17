@@ -2,11 +2,11 @@ import "./view/MovieList.js";
 import "./view/MovieItem.js";
 import './view/AppBar.js'
 // import DataSource from "./data/data-source.js";
-import "./view/SearchBar.js";
+import "./view/HeroSection.js";
 
 const main = () => {
   const movielistElement = document.querySelector("movie-list");
-  const searchElement = document.querySelector("search-bar");
+  const searchElement = document.querySelector("hero-section");
   const brandRefreshElement = document.querySelector("app-bar")
 
   const refreshPage = () => {

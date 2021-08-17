@@ -64,7 +64,7 @@ class MovieList extends HTMLElement {
   }
 
   render() {
-    this.setAttribute("class", "row");
+    this.setAttribute("class", "row justify-content-center");
     this.shadowDOM.innerHTML = "";
     this._movies.forEach((movie) => {
       const movieItemElement = document.createElement("movie-item");

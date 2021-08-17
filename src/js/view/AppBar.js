@@ -16,7 +16,7 @@ class AppBar extends HTMLElement {
   render() {
     this.innerHTML = `
     <header>
-    <nav style="font-family: 'Lato', cursive; background: #032541;" class="navbar navbar-light shadow-sm">
+    <nav style="font-family: 'Lato', cursive; background: #032541;" class="navbar navbar-light shadow-sm fixed-top">
       <div class="container">
         <span id="navbar-brandElement" class="navbar-brand mb-0 h1" style="cursor: pointer;"
           ><h3 style="font-weight: bold;" class="mx-3 text-white">Movie Catalog</h3></span
@@ -24,9 +24,10 @@ class AppBar extends HTMLElement {
       </div>
     </nav>
   </header>`;
-    this
-      .querySelector("#navbar-brandElement")
-      .addEventListener("click", this._clickEvent);
+    this.querySelector("#navbar-brandElement").addEventListener(
+      "click",
+      this._clickEvent
+    );
   }
 }
 customElements.define("app-bar", AppBar);
