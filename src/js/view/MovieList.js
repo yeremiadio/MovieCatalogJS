@@ -6,20 +6,41 @@ import "./loader.js";
 class MovieList extends HTMLElement {
   constructor() {
     super();
+    this._message = "";
     this.shadowDOM = this.attachShadow({ mode: "open" });
   }
 
   connectedCallback() {
+    this.loading = true;
     this.getMovies();
+  }
+
+  shuffle(array) {
+    var currentIndex = array.length,
+      randomIndex;
+
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
   }
 
   getMovies() {
     return axios
-      .get(discoverUrl)
+      .get(discoverUrl + `&page=${Math.floor(Math.random() * 500)}`)
       .then((response) => {
         const res = response.data.results;
+        this.shuffle(res);
+        this.loading = false;
         this.renderPosts(res);
-        console.log(res);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -35,6 +56,7 @@ class MovieList extends HTMLElement {
         console.log(res);
       })
       .catch((error) => {
+        this.renderError(error);
         console.log(error);
       });
   }
@@ -81,14 +103,14 @@ class MovieList extends HTMLElement {
       }
     </style>
     `;
-    if (this._movies) {
+    if (this.loading) {
+      this.shadowDOM.appendChild(this.createLoader());
+    } else {
       this._movies.map((movie) => {
         const movieItemElement = document.createElement("movie-item");
         movieItemElement.movie = movie;
         this.shadowDOM.appendChild(movieItemElement);
       });
-    } else {
-      this.shadowDOM.appendChild(this.createLoader());
     }
   }
 }
