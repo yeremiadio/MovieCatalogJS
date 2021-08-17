@@ -44,12 +44,17 @@ class HeroSection extends HTMLElement {
   render() {
     this.shadowDOM.innerHTML = `
         <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
         .banner {
          padding: 30px;
          min-height: 520px;
          display: flex;
          justify-content: center;
-         align-items: center;
+         flex-direction: column;
          background-repeat: no-repeat;
          object-fit: cover;
          background-size: cover;
@@ -74,7 +79,7 @@ class HeroSection extends HTMLElement {
           padding: 16px;
           display: flex;
           top: 10px;
-          width: 80%;
+          width: 100%;
           background-color: transparent;
        }
 
@@ -84,7 +89,8 @@ class HeroSection extends HTMLElement {
 
        .search-container {
          position: relative;
-         top: 150px;
+         width: 80%;
+         margin: auto;
        }
         
        .search-container > input {
@@ -95,6 +101,7 @@ class HeroSection extends HTMLElement {
           font-family: 'Nunito', cursive;
           background-color: white;
           border-radius: 50px;
+          box-shadow: 0px 1px 20px #03254121;
        }
         
        .search-container > input:focus {
@@ -110,9 +117,9 @@ class HeroSection extends HTMLElement {
        }
         
        .search-container > button {
+          box-shadow: 0px 1px 20px #03254121;
           border-radius: 3px;
           cursor: pointer;
-          margin-top: 10px;
           padding: 16px 30px;
           font-family: 'Nunito', cursive;
           font-weight: 700;
@@ -129,19 +136,35 @@ class HeroSection extends HTMLElement {
           .search-container > input {
               width: 100%;
               padding: 15px 30px;
-              margin-bottom: 12px;
           }
         
           .search-container > button {
+              margin: 10px 0;
               width: 100%;
           }
+
+          .align-ContentIndex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+       }
+       .greetHero {
+         color: white;
+         margin: 0 17px;
+         text-align: center;
        }
        </style>
           <div class="banner" id="banner-movie">
+             <div class="align-ContentIndex">
+                <div class="greetHero">
+                <h1>Get your movies</h1>
+              </div>
               <div class="search-container">
                   <input placeholder="Search movie" id="searchElement" type="search">
                   <button id="searchButtonElement" type="submit">Search</button>
               </div>
+             </div>
           </div>
           `;
 

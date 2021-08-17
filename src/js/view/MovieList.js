@@ -1,6 +1,7 @@
 import axios from "axios";
 import "./MovieItem.js";
 import { discoverUrl, searchUrl } from "../data/instance.js";
+import "./loader.js";
 
 class MovieList extends HTMLElement {
   constructor() {
@@ -48,6 +49,11 @@ class MovieList extends HTMLElement {
     this.render();
   }
 
+  createLoader() {
+    const loaderElement = document.createElement("loader-item");
+    return loaderElement;
+  }
+
   renderError(message) {
     this.shadowDOM.innerHTML = `
     <style>
@@ -65,12 +71,25 @@ class MovieList extends HTMLElement {
 
   render() {
     this.setAttribute("class", "row justify-content-center");
-    this.shadowDOM.innerHTML = "";
-    this._movies.forEach((movie) => {
-      const movieItemElement = document.createElement("movie-item");
-      movieItemElement.movie = movie;
-      this.shadowDOM.appendChild(movieItemElement);
-    });
+    this.shadowDOM.innerHTML = `
+    <style>
+      :host {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        margin: 0 auto;
+      }
+    </style>
+    `;
+    if (this._movies) {
+      this._movies.forEach((movie) => {
+        const movieItemElement = document.createElement("movie-item");
+        movieItemElement.movie = movie;
+        this.shadowDOM.appendChild(movieItemElement);
+      });
+    } else {
+      this.shadowDOM.appendChild(this.createLoader());
+    }
   }
 }
 customElements.define("movie-list", MovieList);
